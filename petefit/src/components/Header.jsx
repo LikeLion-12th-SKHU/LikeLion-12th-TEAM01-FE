@@ -36,7 +36,6 @@ const Header = () => {
       <div>
         <a href="#">정보목록</a>
         <a href="#">커뮤니티</a>
-        <a href="#">회원가입</a>
         <a href="#">로그인</a>
       </div>
     </StyledHeader>

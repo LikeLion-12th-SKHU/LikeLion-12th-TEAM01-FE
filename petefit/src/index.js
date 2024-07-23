@@ -12,6 +12,7 @@ root.render(
     <Header />
     <App />
     <Calendar />
+    <Rank />
     <Footer />
   </>
 );
