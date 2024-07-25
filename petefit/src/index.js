@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Calendar from "./components/calendar/Calendar";
 import Rank from "./components/Rank";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -11,6 +12,7 @@ root.render(
   <>
     <Header />
     <App />
+    <Calendar />
     <Rank />
     <Footer />
   </>
