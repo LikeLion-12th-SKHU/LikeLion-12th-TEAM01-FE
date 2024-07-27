@@ -59,7 +59,7 @@ const RankWrapper = styled.div`
   height: 330px;
 `;
 
-const MainpageLogin = () => {
+const MainPageLogin = () => {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toLocaleDateString()
   );
@@ -91,4 +91,4 @@ const MainpageLogin = () => {
   );
 };
 
-export default MainpageLogin;
+export default MainPageLogin;

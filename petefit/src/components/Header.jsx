@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -16,27 +18,45 @@ const StyledHeader = styled.header`
     display: flex;
     gap: 15px;
   }
+`;
 
-  & a {
-    color: black;
-    text-decoration-line: none;
-  }
+const StyledLink = styled(Link)`
+  color: black;
+  text-decoration-line: none;
 
-  & a:hover {
+  &:hover {
     color: #7ed188;
+    text-decoration: underline;
   }
 `;
 
 const Header = () => {
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+
+  const logout = async () => {
+    try {
+      const response = await fetch("/api/logout", { credentials: "include" });
+      if (response.ok) {
+        setIsLoggedIn(false);
+      }
+    } catch (error) {
+      console.error("Failed to logout", error);
+    }
+  };
+
   return (
     <StyledHeader>
       <div>
         <img src="../../img/logo.png" alt="핏핏로고" />
       </div>
       <div>
-        <a href="#">정보목록</a>
-        <a href="#">커뮤니티</a>
-        <a href="#">로그인</a>
+        <StyledLink to="/informations">정보목록</StyledLink>
+        <StyledLink to="/board">커뮤니티</StyledLink>
+        {!isLoggedIn ? (
+          <StyledLink to="/login">Login</StyledLink>
+        ) : (
+          <button onClick={logout}>Logout</button>
+        )}
       </div>
     </StyledHeader>
   );
