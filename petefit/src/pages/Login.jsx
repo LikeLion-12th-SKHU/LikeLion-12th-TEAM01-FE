@@ -1,12 +1,14 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useAuth();
+
   return (
     <>
-      <Header />
       <GoogleOAuthProvider clientId="54995240563-24muo48ifcdrt4is1jiq5r6tf6m9cudv.apps.googleusercontent.com">
         <div>
           <h1>Login</h1>
@@ -27,7 +29,13 @@ export default function Login() {
                 }
               )
                 .then((response) => response.json())
-                .then((data) => console.log(data))
+                .then((data) => {
+                  console.log(data);
+                  if (data.success) {
+                    setIsLoggedIn(true);
+                    navigate("/");
+                  }
+                })
                 .catch((error) => console.error("Error:", error));
             }}
             onError={() => {
@@ -36,7 +44,6 @@ export default function Login() {
           />
         </div>
       </GoogleOAuthProvider>
-      <Footer />
     </>
   );
 }
