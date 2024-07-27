@@ -83,7 +83,7 @@ const RankWrapper = styled.div`
   height: 330px;
 `;
 
-const Mainpage = () => {
+const MainPage = () => {
   return (
     <Wrapper>
       <TodayRecordWrapper>
@@ -109,4 +109,4 @@ const Mainpage = () => {
   );
 };
 
-export default Mainpage;
+export default MainPage;
