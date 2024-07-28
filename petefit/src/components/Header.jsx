@@ -20,9 +20,16 @@ const StyledHeader = styled.header`
   }
 `;
 
+const LogoLink = styled(Link)`
+  padding-left: 20px;
+`;
+
 const StyledLink = styled(Link)`
   color: black;
   text-decoration-line: none;
+  width: 70px;
+  display: flex;
+  align-items: center;
 
   &:hover {
     color: #7ed188;
@@ -47,15 +54,27 @@ const Header = () => {
   return (
     <StyledHeader>
       <div>
-        <img src="../../img/logo.png" alt="핏핏로고" />
+        <LogoLink to="/">
+          <img
+            src="../../img/logo.png"
+            alt="핏핏로고"
+            style={{ width: "100px", height: "50px" }}
+          />
+        </LogoLink>
       </div>
       <div>
         <StyledLink to="/informations">정보목록</StyledLink>
         <StyledLink to="/board">커뮤니티</StyledLink>
         {!isLoggedIn ? (
-          <StyledLink to="/login">Login</StyledLink>
+          <StyledLink to="/login">로그인</StyledLink>
         ) : (
-          <button onClick={logout}>Logout</button>
+          <>
+            <StyledLink to="/board">대결랭킹</StyledLink>
+            <button onClick={logout}>로그아웃</button>
+            <StyledLink to="/mypage">
+              <img src="../../img/profile.png" alt="profile" />
+            </StyledLink>
+          </>
         )}
       </div>
     </StyledHeader>
