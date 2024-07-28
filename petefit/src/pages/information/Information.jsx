@@ -13,7 +13,7 @@ import {
   Pagination,
   PageButton,
   ArrowButton,
-} from "./InformationListStyles";
+} from "./InformationStyles";
 import Search from "../../components/search/Search";
 
 const InformationList = () => {

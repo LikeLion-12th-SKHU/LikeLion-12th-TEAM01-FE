@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import MainPage from "./pages/main/MainPage.jsx";
 import { AuthProvider } from "./contexts/AuthContext";
 import Community from "./pages/community/Community";
-import InformationList from "./pages/informationList/InformationList.jsx";
+import Information from "./pages/information/Information.jsx";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/informations" element={<InformationList />} />
+        <Route path="/informations" element={<Information />} />
         <Route path="/board" element={<Community />} />
       </Routes>
       <Footer />
