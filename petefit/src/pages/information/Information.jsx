@@ -16,7 +16,7 @@ import {
 } from "./InformationStyles";
 import Search from "../../components/search/Search";
 
-const InformationList = () => {
+const Information = () => {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -145,4 +145,4 @@ const InformationList = () => {
   );
 };
 
-export default InformationList;
+export default Information;
