@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import MainPage from "./pages/main/MainPage.jsx";
 import { AuthProvider } from "./contexts/AuthContext";
 import Community from "./pages/community/Community";
-import Information from "./pages/information/Information.jsx";
+import Information from "./pages/information/Information";
 
 function App() {
   return (
