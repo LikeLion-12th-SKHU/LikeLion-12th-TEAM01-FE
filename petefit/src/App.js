@@ -15,19 +15,21 @@ import store from "./store/store";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/informations" element={<Information />} />
-        <Route path="/board" element={<Community />} />
-        <Route path="/compete" element={<Compete />} />
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/mypage/onboarding" element={<UserProfile />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/informations" element={<Information />} />
+          <Route path="/board" element={<Community />} />
+          <Route path="/compete" element={<Compete />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/mypage/onboarding" element={<UserProfile />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </Provider>
   );
 }
 

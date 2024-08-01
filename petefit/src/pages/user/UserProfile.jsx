@@ -1,6 +1,88 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./userSlice"; // setUser 액션 가져오기
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+  height: 70vh;
+`;
+
+const Title = styled.h1`
+  font-size: 24px;
+  margin-bottom: 40px;
+`;
+
+const FormDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Label = styled.label`
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: left;
+  width: 100%;
+`;
+
+const Input = styled.input`
+  width: 77%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  &:focus {
+    border-color: #7ed188;
+    outline: none;
+  }
+`;
+
+const Select = styled.select`
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  &:focus {
+    border-color: #7ed188;
+    outline: none;
+  }
+`;
+
+const ConfirmButton = styled.button`
+  background-color: #bfbfbf;
+  margin-left: 10px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    background-color: #a5a5a5;
+  }
+`;
+
+const EditButton = styled.button`
+  background-color: #7ed188;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 60px;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #6db475;
+  }
+`;
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -119,54 +201,60 @@ const UserProfile = () => {
   }
 
   return (
-    <div>
-      <h2>기본 정보를 입력해주세요!</h2>
+    <Container>
+      <Title>기본 정보를 입력해주세요!</Title>
       <form onSubmit={handleSubmit}>
-        <label>
+        <Label>
           닉네임:
-          <input
+          <Input
             type="text"
             name="nickname"
             value={userInfo.nickname}
             onChange={handleChange}
           />
-          <button type="button" onClick={checkNickname}>
+          <ConfirmButton type="button" onClick={checkNickname}>
             중복 확인
-          </button>
+          </ConfirmButton>
           {nicknameError && <div style={{ color: "red" }}>{nicknameError}</div>}
-        </label>
+        </Label>
         <br />
-        <label>
-          키 (cm):
-          <input
-            type="number"
-            name="height"
-            value={userInfo.height}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          몸무게 (kg):
-          <input
-            type="number"
-            name="weight"
-            value={userInfo.weight}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          성별:
-          <select name="gender" value={userInfo.gender} onChange={handleChange}>
-            <option value="">선택하세요</option>
-            <option value="남성">남성</option>
-            <option value="여성">여성</option>
-            <option value="기타">기타</option>
-          </select>
-        </label>
+        <FormDiv>
+          <Label>
+            키 (cm):
+            <Input
+              type="number"
+              name="height"
+              value={userInfo.height}
+              onChange={handleChange}
+            />
+          </Label>
+          <Label>
+            몸무게 (kg):
+            <Input
+              type="number"
+              name="weight"
+              value={userInfo.weight}
+              onChange={handleChange}
+            />
+          </Label>
+          <Label>
+            성별:
+            <Select
+              name="gender"
+              value={userInfo.gender}
+              onChange={handleChange}
+            >
+              <option value="">선택하세요</option>
+              <option value="남성">남성</option>
+              <option value="여성">여성</option>
+              <option value="기타">기타</option>
+            </Select>
+          </Label>
+        </FormDiv>
         <br />
-        <button type="submit">수정하기</button>
+        <EditButton type="submit">수정하기</EditButton>
       </form>
-    </div>
+    </Container>
   );
 };
 
