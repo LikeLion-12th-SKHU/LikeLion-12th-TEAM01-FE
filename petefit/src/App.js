@@ -9,6 +9,9 @@ import Community from "./pages/community/Community";
 import Information from "./pages/information/Information";
 import Compete from "./pages/compete/compete";
 import MyPage from "./pages/my/MyPage";
+import UserProfile from "./pages/user/UserProfile";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
         <Route path="/board" element={<Community />} />
         <Route path="/compete" element={<Compete />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/onboarding" element={<UserProfile />} />
       </Routes>
       <Footer />
     </Router>
