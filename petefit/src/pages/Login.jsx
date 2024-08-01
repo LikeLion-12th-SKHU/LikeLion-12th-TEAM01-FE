@@ -60,12 +60,17 @@ export default function Login() {
 
             // 백엔드 서버로 토큰 전송
             const token = credentialResponse.credential;
-            fetch(`${backendUrl}/login?token=${encodeURIComponent(token)}`, {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            })
+            fetch(
+              `${backendUrl}/login/oauth2/code/google?token=${encodeURIComponent(
+                token
+              )}`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            )
               .then((response) => {
                 if (!response.ok) {
                   throw new Error("Network response was not ok");
