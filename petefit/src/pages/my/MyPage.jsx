@@ -41,7 +41,7 @@ export default function MyPage() {
               <p>섭취 칼로리: 1700 kcal</p>
               <div className="progress-bar" style={{ width: "80%" }}></div>
             </div>
-            {/* 추가적인 상태 바를 여기에 추가하세요 */}
+            {/* 추가 상태 바 */}
           </section>
 
           <div className="my_bottom">
