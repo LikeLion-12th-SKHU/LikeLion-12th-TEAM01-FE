@@ -46,8 +46,7 @@ const RememberMe = styled.div`
 
 export default function Login() {
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth();
-
+  const { setIsLoggedIn, setUser } = useAuth();
   const backendUrl = process.env.REACT_APP_API_URL;
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -61,14 +60,18 @@ export default function Login() {
 
             // 백엔드 서버로 토큰 전송
             const token = credentialResponse.credential;
-            fetch(`${backendUrl}/login?token=${encodeURIComponent(token)}`, {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            })
+            fetch(
+              `${backendUrl}/login/oauth2/code/google?token=${encodeURIComponent(
+                token
+              )}`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            )
               .then((response) => {
-                console.log("Response from server:", response);
                 if (!response.ok) {
                   throw new Error("Network response was not ok");
                 }
@@ -77,6 +80,12 @@ export default function Login() {
               .then((data) => {
                 console.log("Data from server:", data);
                 if (data.success) {
+                  // 사용자 정보 설정
+                  const userData = {
+                    email: data.email, // 서버에서 받아온 이메일
+                    name: data.name, // 서버에서 받아온 이름
+                  };
+                  setUser(userData); // 사용자 정보 설정
                   setIsLoggedIn(true);
                   navigate("/");
                 } else {
