@@ -46,8 +46,7 @@ const RememberMe = styled.div`
 
 export default function Login() {
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth();
-
+  const { setIsLoggedIn, setUser } = useAuth();
   const backendUrl = process.env.REACT_APP_API_URL;
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -59,24 +58,33 @@ export default function Login() {
           onSuccess={(credentialResponse) => {
             console.log("Google Login Success:", credentialResponse);
 
-            // 백엔드 서버로 토큰 전송
             const token = credentialResponse.credential;
-            fetch(`${backendUrl}/login?token=${encodeURIComponent(token)}`, {
+            console.log("Token:", token); // 토큰 출력
+
+            // GET 메서드로 요청을 보낼 때 Bearer 토큰을 Authorization 헤더에 포함
+            fetch(`${backendUrl}/login/oauth2/code/google`, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`, // Bearer 토큰을 Authorization 헤더에 포함
               },
             })
               .then((response) => {
-                console.log("Response from server:", response);
                 if (!response.ok) {
-                  throw new Error("Network response was not ok");
+                  throw new Error(
+                    `Network response was not ok, status: ${response.status}`
+                  );
                 }
-                return response.json();
+                return response.json(); // JSON으로 응답 처리
               })
               .then((data) => {
                 console.log("Data from server:", data);
                 if (data.success) {
+                  const userData = {
+                    email: data.email,
+                    name: data.name,
+                  };
+                  setUser(userData);
                   setIsLoggedIn(true);
                   navigate("/");
                 } else {
