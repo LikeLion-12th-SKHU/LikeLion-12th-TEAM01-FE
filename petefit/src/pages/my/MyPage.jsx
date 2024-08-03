@@ -1,4 +1,5 @@
 import Calendar from "../../components/calendar/Calendar";
+import InformationList from "../../components/InformationList";
 import "./my.css";
 
 export default function MyPage() {
@@ -63,15 +64,7 @@ export default function MyPage() {
 
             <section className="stored-info">
               <h2>저장된 정보</h2>
-              <div className="info-item">
-                <h3>칼슘</h3>
-                <p>좋아요: 54</p>
-              </div>
-              <div className="info-item">
-                <h3>Leg Press 올바른 사용법</h3>
-                <p>좋아요: 68</p>
-              </div>
-              {/* 추가 정보 */}
+              <InformationList />
             </section>
           </div>
         </div>
