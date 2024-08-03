@@ -18,13 +18,13 @@ const InfoItem = styled.div`
   text-align: left;
   cursor: pointer;
 
-  h3 {
+  .info-source {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 8px;
   }
 
-  h2 {
+  .info-title {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -79,8 +79,8 @@ const InformationList = () => {
         >
           <InfoItem key={index}>
             <ElementWrapper>
-              <h3>{item.source}</h3>
-              <h2>{item.title}</h2>
+              <h3 className="info-source">{item.source}</h3>
+              <h2 className="info-title">{item.title}</h2>
               <CountWrapper>
                 <div>
                   <div className="commend">
