@@ -22,7 +22,7 @@ const Information = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [activeCategory, setActiveCategory] = useState("전체");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // 한 페이지 항목 수(수정 필요)
+  const itemsPerPage = 6; // 한 페이지 항목 수(수정 필요)
 
   useEffect(() => {
     // 데이터 JSON 파일에서 가져오기
