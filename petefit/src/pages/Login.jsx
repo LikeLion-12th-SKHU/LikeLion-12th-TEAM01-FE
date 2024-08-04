@@ -1,6 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import styled from "styled-components";
+
+const LoginDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  background-color: #f7f7f7;
+
+  h1 {
+    margin-bottom: 40px;
+  }
+`;
+
+const LoginButton = styled.button`
+  width: 400px;
+  height: 50px;
+  border-radius: 5px;
+  border: 2px solid #d9d9d9;
+  background-color: #ffffff;
+  font-size: 18px;
+
+  &:hover {
+    box-shadow: 0 6px 12px #d9d9d9;
+  }
+`;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -50,19 +77,11 @@ const Login = () => {
   }, [navigate, setIsLoggedIn, setUser, backendUrl]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "75vh",
-      }}
-    >
+    <LoginDiv>
       <h1>Login</h1>
-      <button onClick={handleLogin}>Google 로그인</button>
+      <LoginButton onClick={handleLogin}>Google로 로그인</LoginButton>
       {loginStatus && <p>{loginStatus}</p>}
-    </div>
+    </LoginDiv>
   );
 };
 
