@@ -16,12 +16,13 @@ const Container = styled.div`
 
 const Title = styled.h1`
   font-size: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 `;
 
 const FormDiv = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 const Label = styled.label`
@@ -56,6 +57,13 @@ const Select = styled.select`
     border-color: #7ed188;
     outline: none;
   }
+`;
+
+const CheckboxLabel = styled.label`
+  font-size: 18px;
+  margin: 0 20px 20px 10px;
+  display: flex;
+  align-items: center;
 `;
 
 const ConfirmButton = styled.button`
@@ -93,6 +101,7 @@ const UserProfile = () => {
     weight: "",
     gender: "",
   });
+  const [selectedSupplements, setSelectedSupplements] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [nicknameError, setNicknameError] = useState("");
@@ -168,6 +177,15 @@ const UserProfile = () => {
     });
   };
 
+  const handleSupplementChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setSelectedSupplements((prev) => [...prev, value]);
+    } else {
+      setSelectedSupplements((prev) => prev.filter((id) => id !== value));
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -176,7 +194,10 @@ const UserProfile = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userInfo), // 수정된 사용자 정보를 JSON 형식으로 전송
+        body: JSON.stringify({
+          userInfo,
+          supplementIds: selectedSupplements.join(","),
+        }), // 수정된 사용자 정보를 JSON 형식으로 전송
       });
 
       if (!response.ok) {
@@ -250,6 +271,94 @@ const UserProfile = () => {
               <option value="기타">기타</option>
             </Select>
           </Label>
+        </FormDiv>
+        <br />
+        <Title>섭취하고 있는 영양제를 모두 체크해주세요!</Title>
+        <FormDiv>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="1"
+              onChange={handleSupplementChange}
+            />
+            없음
+          </CheckboxLabel>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="2"
+              onChange={handleSupplementChange}
+            />
+            비타민D
+          </CheckboxLabel>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="3"
+              onChange={handleSupplementChange}
+            />
+            비타민C
+          </CheckboxLabel>
+        </FormDiv>
+        <FormDiv>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="4"
+              onChange={handleSupplementChange}
+            />
+            칼슘
+          </CheckboxLabel>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="5"
+              onChange={handleSupplementChange}
+            />
+            오메가3
+          </CheckboxLabel>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="6"
+              onChange={handleSupplementChange}
+            />
+            마그네슘
+          </CheckboxLabel>
+        </FormDiv>
+        <FormDiv>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="7"
+              onChange={handleSupplementChange}
+            />
+            종합비타민
+          </CheckboxLabel>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="8"
+              onChange={handleSupplementChange}
+            />
+            유산균
+          </CheckboxLabel>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="9"
+              onChange={handleSupplementChange}
+            />
+            철분제
+          </CheckboxLabel>
+          <CheckboxLabel>
+            <input
+              type="checkbox"
+              value="10"
+              onChange={handleSupplementChange}
+            />
+            기타
+          </CheckboxLabel>
         </FormDiv>
         <br />
         <EditButton type="submit">수정하기</EditButton>
