@@ -6,11 +6,11 @@ export const SearchContainer = styled.div`
 
 export const SearchInput = styled.input`
   font-family: "Pretendard-Regular";
-  font-size: 25px;
+  font-size: 21px;
   font-weight: bold;
   color: #000000;
   width: 780px;
-  height: 70px;
+  height: 60px;
   border: 2px solid #000000;
   border-radius: 50px;
   padding-left: 40px;
