@@ -1,8 +1,32 @@
+import React, { useEffect, useState } from "react";
 import Calendar from "../../components/calendar/Calendar";
 import InformationList from "../../components/InformationList";
 import "./my.css";
 
 export default function MyPage() {
+  const [profileInfo, setProfileInfo] = useState({
+    name: "",
+    height: "",
+    weight: "",
+    gender: "",
+  });
+
+  useEffect(() => {
+    fetch("/mypage/getMember")
+      .then((response) => response.json())
+      .then((data) => {
+        setProfileInfo({
+          name: data.name,
+          height: data.height,
+          weight: data.weight,
+          gender: data.gender,
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching profile info:", error);
+      });
+  }, []);
+
   return (
     <div className="container">
       <h1>프로필</h1>
@@ -16,10 +40,10 @@ export default function MyPage() {
               className="profile-image"
             />
             <div className="profile-info">
-              <h3>인생은 즐거워</h3>
-              <p>키: 163 cm</p>
-              <p>몸무게: 53 kg</p>
-              <p>성별: 여자</p>
+              <h3>{profileInfo.name}</h3>
+              <p>키: {profileInfo.height} cm</p>
+              <p>몸무게: {profileInfo.weight} kg</p>
+              <p>성별: {profileInfo.gender}</p>
             </div>
           </section>
 
