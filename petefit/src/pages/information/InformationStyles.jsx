@@ -15,15 +15,16 @@ export const InfoItem = styled.div`
   width: 1320px;
   height: 150px;
   text-align: left;
+  cursor: pointer;
 
   h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 8px;
   }
 
   h2 {
-    font-size: 38px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
   }
@@ -45,7 +46,7 @@ export const InfoItem = styled.div`
 
   div {
     float: left;
-    font-size: 20px;
+    font-size: 18px;
     margin-right: 20px;
   }
 `;
@@ -61,24 +62,24 @@ export const ElementWrapper = styled.div`
 `;
 
 export const SearchWrapper = styled.div`
-  margin-top: 60px;
-  margin-bottom: 70px;
+  margin-top: 50px;
+  margin-bottom: 60px;
 `;
 
 export const Line = styled.hr`
   background-color: #767676;
   border: none;
   height: 2px;
-  width: 1310px;
+  width: 1295px;
   margin-bottom: 0;
 `;
 
 export const Tab = styled.div`
   position: relative;
   justify-content: space-between;
-  margin-right: 35px;
-  margin-left: 35px;
-  font-size: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
+  font-size: 32px;
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 4px;
@@ -95,7 +96,7 @@ export const Tab = styled.div`
 export const Tabs = styled.div`
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin: 16px;
 `;
 
 export const Pagination = styled.div`
