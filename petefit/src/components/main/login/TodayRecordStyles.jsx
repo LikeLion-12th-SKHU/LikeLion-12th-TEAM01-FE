@@ -8,9 +8,12 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 20px;
   border: 3px solid #7ed188;
-  width: 850px;
-  height: 700px;
+  background-color: #ffffff;
+  width: 840px;
+  height: 770px;
   border-radius: 10px;
+  margin-top: -22px;
+  margin-left: -23px;
 `;
 
 export const RecordWrapper = styled.div`
@@ -231,3 +234,5 @@ export const SupplementOption = styled.p`
   font-size: 16px;
   margin-right: 7px;
 `;
+
+export const WeightInput = styled.input``;

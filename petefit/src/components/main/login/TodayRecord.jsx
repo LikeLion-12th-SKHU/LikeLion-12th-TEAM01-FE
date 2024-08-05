@@ -25,6 +25,7 @@ import {
   Dropdown,
   SupplementContainer,
   SupplementOption,
+  WeightInput,
 } from "./TodayRecordStyles";
 import moment from "moment";
 
@@ -47,6 +48,7 @@ const TodayRecord = ({ selectedDate }) => {
   const [sleep, setSleep] = useState("");
   const [savedRecords, setSavedRecords] = useState(null);
   const [isEditing, setIsEditing] = useState(true);
+  const [weight, setWeight] = useState("");
 
   useEffect(() => {
     loadRecords(selectedDate);
@@ -141,6 +143,13 @@ const TodayRecord = ({ selectedDate }) => {
     setSleep(e.target.value);
   };
 
+  const handleWeightChange = (e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      setWeight(value);
+    }
+  };
+
   const saveRecords = () => {
     const records = {
       mealContent,
@@ -149,6 +158,7 @@ const TodayRecord = ({ selectedDate }) => {
       exercise,
       exerciseIntensity,
       sleep,
+      weight,
       date: selectedDate,
     };
 
@@ -180,6 +190,15 @@ const TodayRecord = ({ selectedDate }) => {
         <>
           <RecordWrapper>
             <Record>
+              <Label>몸무게</Label>
+              <InputContainer>
+                <Input
+                  type="text"
+                  value={weight}
+                  onChange={handleWeightChange}
+                />
+                <UnitLabel>kg</UnitLabel>
+              </InputContainer>
               <Label>식단 기록</Label>
               <Dropdown value={mealType} onChange={handleMealChange}>
                 <DropdownItem value="breakfast">아침</DropdownItem>
@@ -287,6 +306,10 @@ const TodayRecord = ({ selectedDate }) => {
         </>
       ) : (
         <SavedRecordsContainer>
+          <RecordItem>
+            <Label>몸무게</Label>
+            <p>{savedRecords?.weight || "입력되지 않음"} kg</p>
+          </RecordItem>
           <RecordItem>
             <Label>식단 기록</Label>
             {Object.entries(savedRecords?.mealContent || {}).map(
