@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import information from "../../backend/Information.json";
+import { Link } from "react-router-dom";
 import {
   Container,
   InfoList,
@@ -67,7 +68,6 @@ const Information = () => {
     }
   };
 
-  // 카테고리 데이터
   const categories = ["전체", ...new Set(data.map((item) => item.category))];
 
   return (
@@ -93,30 +93,38 @@ const Information = () => {
       <InfoList>
         {paginatedData.map((item, index) => (
           <InfoItem key={index}>
-            <ElementWrapper>
-              <h3>{item.source}</h3>
-              <h2>{item.title}</h2>
-              <CountWrapper>
-                <div>
-                  <div className="commend">
-                    <img src="../../../img/recommend.png" alt="recommend"></img>
+            <Link
+              to={`/informations/${item.id}`}
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
+              <ElementWrapper>
+                <h3>{item.source}</h3>
+                <h2>{item.title}</h2>
+                <CountWrapper>
+                  <div>
+                    <div className="commend">
+                      <img
+                        src="../../../img/recommend.png"
+                        alt="recommend"
+                      ></img>
+                    </div>
+                    추천 수: {item.recommend}
                   </div>
-                  추천 수: {item.recommend}
-                </div>
-                <div>
-                  <div className="save">
-                    <img src="../../../img/save.png" alt="save"></img>
+                  <div>
+                    <div className="save">
+                      <img src="../../../img/save.png" alt="save"></img>
+                    </div>
+                    저장 수: {item.save}
                   </div>
-                  저장 수: {item.save}
-                </div>
-                <div>
-                  <div className="views">
-                    <img src="../../../img/views.png" alt="views"></img>
+                  <div>
+                    <div className="views">
+                      <img src="../../../img/views.png" alt="views"></img>
+                    </div>
+                    조회 수: {item.views}
                   </div>
-                  조회 수: {item.views}
-                </div>
-              </CountWrapper>
-            </ElementWrapper>
+                </CountWrapper>
+              </ElementWrapper>
+            </Link>
           </InfoItem>
         ))}
       </InfoList>

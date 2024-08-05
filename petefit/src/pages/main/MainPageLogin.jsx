@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CalendarLogin from "../../components/calendarLogin/CalendarLogin";
-import TodayRecord from "../../components/main/TodayRecord";
+import CalendarLogin from "../../components/main/login/CalendarLogin";
+import TodayRecord from "../../components/main/login/TodayRecord";
 import styled from "styled-components";
 
 const Wrapper = styled.div`

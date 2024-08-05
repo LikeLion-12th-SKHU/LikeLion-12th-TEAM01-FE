@@ -1,11 +1,10 @@
 import Calendar from "react-calendar";
 import styled from "styled-components";
-import "../../index.css";
+import "../../../index.css";
 import "react-calendar/dist/Calendar.css";
 
 export const StyledCalendarWrapper = styled.div`
-  width: 360px;
-  position: relative;
+  width: 380px;
   .react-calendar {
     width: 100%;
     border: none;
@@ -25,13 +24,14 @@ export const StyledCalendarWrapper = styled.div`
 
   /* 네비게이션 */
   .react-calendar__navigation {
+    height: 50px;
     justify-content: center;
-    margin: 5px;
+    margin-bottom: 8px;
   }
 
   /* 네비게이션 폰트 설정 */
   .react-calendar__navigation button {
-    font-size: 15px;
+    font-size: 18px;
     background-color: white;
   }
 
@@ -55,11 +55,11 @@ export const StyledCalendarWrapper = styled.div`
 
   /* 요일 부분 */
   .react-calendar__month-view__weekdays {
-    font-size: 10px;
+    font-size: 11px;
     background-color: #b7eabd;
     border: 1px solid #7ed188;
     border-radius: 7px 7px 0 0;
-    padding-top: 20px;
+    padding-top: 18px;
     abbr {
       text-decoration: none;
       font-weight: 400;
@@ -82,19 +82,19 @@ export const StyledCalendarWrapper = styled.div`
 
   /* 일 날짜 */
   .react-calendar__tile {
-    font-size: 10px;
-    padding: 1px 3px 30px 30px;
+    font-size: 11px;
+    padding: 1px 1px 32px 30px;
     border: 1px solid #7ed188;
-    position: relative;
   }
 
   /* 선택한 날짜 스타일 */
   .react-calendar__tile:enabled:focus {
-    background-color: #7ed188;
+    background-color: white;
     color: black;
   }
 
   .react-calendar__tile:enabled:hover {
+    background-color: white;
   }
 
   .react-calendar__tile--active {
@@ -115,45 +115,18 @@ export const StyledCalendarWrapper = styled.div`
 
   /* 오늘 날짜 스타일 */
   .react-calendar__tile--now {
+    background: none;
     abbr {
       border: 1.5px solid #7ed188;
       border-radius: 50%;
-      padding: 2px;
+      padding: 1px 4px;
       margin: 1px;
     }
   }
 
   .react-calendar__tile--now:hover {
-    background-color: #d2d2d2;
-  }
-
-  .react-calendar__tile--now:enabled {
     background-color: white;
   }
 `;
 
-export const StyledDot = styled.div`
-  background-color: #ff0000;
-  border-radius: 50%;
-  width: 9px;
-  height: 9px;
-  position: absolute;
-  bottom: 3px;
-  right: 2px;
-`;
-
 export const StyledCalendar = styled(Calendar)``;
-
-export const AddPeriodButton = styled.button`
-  font-size: 10px;
-  font-weight: bold;
-  margin: 7px 0 7px 285px;
-  padding: 3px 7px 4px 7px;
-  background-color: #8fdd98;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #6dcd79;
-  }
-`;
