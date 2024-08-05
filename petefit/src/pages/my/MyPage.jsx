@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Calendar from "../../components/calendar/Calendar";
+import Calendar from "../../components/main/logout/Calendar";
 import InformationList from "../../components/InformationList";
 import "./my.css";
 
