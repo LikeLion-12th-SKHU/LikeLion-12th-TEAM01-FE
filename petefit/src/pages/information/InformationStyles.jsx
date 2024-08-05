@@ -31,17 +31,17 @@ export const InfoItem = styled.div`
 
   .commend {
     margin-top: -4px;
-    margin-right: 3px;
+    margin-right: 13px;
   }
 
   .save {
     margin-top: -1px;
-    margin-right: 3px;
+    margin-right: 4px;
   }
 
   .views {
     margin-top: -2px;
-    margin-right: 3px;
+    margin-right: 13px;
   }
 
   div {
