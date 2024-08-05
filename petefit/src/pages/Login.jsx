@@ -48,12 +48,19 @@ const Login = () => {
     const code = urlParams.get("code");
 
     if (code) {
-      fetch(`${backendUrl}/login/oauth2/code/google?code=${code}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        `${backendUrl}/login/oauth2/code/google?code=${code}&noCache=true`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Cache-Control":
+              "no-store, no-cache, must-revalidate, proxy-revalidate",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
+      )
         .then((response) => {
           if (!response.ok) {
             throw new Error(`Status: ${response.status}`);

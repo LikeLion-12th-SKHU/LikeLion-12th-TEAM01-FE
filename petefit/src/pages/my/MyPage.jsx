@@ -66,23 +66,47 @@ export default function MyPage() {
               <p>섭취 칼로리: 1700 kcal</p>
               <div className="progress-bar" style={{ width: "80%" }}></div>
             </div>
+            <div className="status-bar">
+              <p>운동 시간: 30 m</p>
+              <div className="progress-bar" style={{ width: "30%" }}></div>
+            </div>
+            <div className="status-bar">
+              <p>운동 강도: 60 %</p>
+              <div className="progress-bar" style={{ width: "60%" }}></div>
+            </div>
+            <div className="status-bar">
+              <p>수면 시간: 7 h</p>
+              <div className="progress-bar" style={{ width: "100%" }}></div>
+            </div>
             {/* 추가 상태 바 */}
           </section>
 
           <div className="my_bottom">
             <section className="meals">
               <h2>식단</h2>
-              <div className="meal">
-                <h3>아침</h3>
-                <p>식사 내용</p>
+              <div className="meal-list">
+                <div className="meal">
+                  <h3>아침</h3>
+                  <img className="meal-image" src="/img/meal1.png" alt="아침" />
+                  <p className="diet">사과1개, 그릭요거트</p>
+                </div>
+                <div className="meal">
+                  <h3>점심</h3>
+                  <img className="meal-image" src="/img/meal2.png" alt="점심" />
+                  <p className="diet">키토김밥 1줄</p>
+                </div>
               </div>
-              <div className="meal">
-                <h3>점심</h3>
-                <p>식사 내용</p>
-              </div>
-              <div className="meal">
-                <h3>저녁</h3>
-                <p>식사 내용</p>
+              <div className="meal-list">
+                <div className="meal">
+                  <h3>저녁</h3>
+                  <img className="meal-image" src="/img/meal3.png" alt="저녁" />
+                  <p className="diet">단백질쉐이크, 반숙계란</p>
+                </div>
+                <div className="meal">
+                  <h3>간식</h3>
+                  <img className="meal-image" src="/img/meal4.png" alt="간식" />
+                  <p className="diet">딸기 빙수</p>
+                </div>
               </div>
             </section>
 
