@@ -21,7 +21,8 @@ const Button = styled.button`
   padding: 10px 20px;
   margin: 30px 50px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -33,6 +34,16 @@ const Button = styled.button`
 
   &:focus {
     outline: none;
+  }
+
+  .user-rank {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .other-rank {
+    font-size: 16px;
+    font-weight: normal;
   }
 `;
 
@@ -52,16 +63,16 @@ const Compete = () => {
           onClick={() => setCurrentView("overall")}
         >
           전체 순위
-          <div>나: 현재 {overallRank}위</div>
-          <div>총 {totalParticipants}명</div>
+          <div className="user-rank">나: 현재 {overallRank}위</div>
+          <div className="other-rank">총 {totalParticipants}명</div>
         </Button>
         <Button
           active={currentView === "team"}
           onClick={() => setCurrentView("team")}
         >
-          팀내 랭킹
-          <div>나: 현재 {teamRank}위</div>
-          <div>총 {totalTeams}명</div>
+          팀내 순위
+          <div className="user-rank">나: 현재 {teamRank}위</div>
+          <div className="other-rank">총 {totalTeams}명</div>
         </Button>
       </ButtonContainer>
       {currentView === "overall" ? (
