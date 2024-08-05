@@ -1,10 +1,11 @@
 import Calendar from "react-calendar";
 import styled from "styled-components";
-import "../../index.css";
+import "../../../index.css";
 import "react-calendar/dist/Calendar.css";
 
 export const StyledCalendarWrapper = styled.div`
   width: 380px;
+  position: relative;
   .react-calendar {
     width: 100%;
     border: none;
@@ -26,7 +27,7 @@ export const StyledCalendarWrapper = styled.div`
   .react-calendar__navigation {
     height: 50px;
     justify-content: center;
-    margin-bottom: 8px;
+    margin: 8px;
   }
 
   /* 네비게이션 폰트 설정 */
@@ -85,16 +86,16 @@ export const StyledCalendarWrapper = styled.div`
     font-size: 11px;
     padding: 1px 1px 32px 30px;
     border: 1px solid #7ed188;
+    position: relative;
   }
 
   /* 선택한 날짜 스타일 */
   .react-calendar__tile:enabled:focus {
-    background-color: white;
+    background-color: #7ed188;
     color: black;
   }
 
   .react-calendar__tile:enabled:hover {
-    background-color: white;
   }
 
   .react-calendar__tile--active {
@@ -115,7 +116,6 @@ export const StyledCalendarWrapper = styled.div`
 
   /* 오늘 날짜 스타일 */
   .react-calendar__tile--now {
-    background: none;
     abbr {
       border: 1.5px solid #7ed188;
       border-radius: 50%;
@@ -125,8 +125,36 @@ export const StyledCalendarWrapper = styled.div`
   }
 
   .react-calendar__tile--now:hover {
+    background-color: #d2d2d2;
+  }
+
+  .react-calendar__tile--now:enabled {
     background-color: white;
   }
 `;
 
+export const StyledDot = styled.div`
+  background-color: #ff0000;
+  border-radius: 50%;
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  bottom: 3px;
+  right: 2px;
+`;
+
 export const StyledCalendar = styled(Calendar)``;
+
+export const AddPeriodButton = styled.button`
+  font-size: 11px;
+  font-weight: bold;
+  margin: 9px 0 10px 300px;
+  padding: 3px 7px 4px 7px;
+  background-color: #8fdd98;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #6dcd79;
+  }
+`;
