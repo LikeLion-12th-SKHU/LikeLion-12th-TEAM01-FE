@@ -66,13 +66,17 @@ const Login = () => {
           if (data.success) {
             setUser({ email: data.email, name: data.name });
             setIsLoggedIn(true);
+            console.log("여긴 됨");
             setLoginStatus("로그인 성공!");
+            console.log("여기 2");
             navigate("/");
           } else {
             setLoginStatus("로그인 실패: " + data.message);
+            console.log("여기 3");
           }
         })
         .catch((error) => {
+          console.log("여기 4");
           setLoginStatus("Error: " + error.message);
         });
     }
