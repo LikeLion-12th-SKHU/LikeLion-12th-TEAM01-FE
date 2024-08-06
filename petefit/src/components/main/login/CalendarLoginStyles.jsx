@@ -158,3 +158,12 @@ export const AddPeriodButton = styled.button`
     background-color: #6dcd79;
   }
 `;
+
+export const RecordSign = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  pointer-events: none;
+`;
