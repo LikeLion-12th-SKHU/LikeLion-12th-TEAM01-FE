@@ -3,12 +3,13 @@ import {
   StyledCalendar,
   StyledDot,
   AddPeriodButton,
+  RecordSign,
 } from "./CalendarLoginStyles";
 import moment from "moment";
 import Holidays from "date-holidays";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-const CalendarLogin = ({ onChangeDate }) => {
+const CalendarLogin = ({ onChangeDate, recordDates = [] }) => {
   const today = new Date();
   const [date, setDate] = useState(today);
   const [activeStartDate, setActiveStartDate] = useState(new Date());
@@ -90,6 +91,12 @@ const CalendarLogin = ({ onChangeDate }) => {
           const formattedDate = moment(date).format("YYYY-MM-DD");
           return (
             <>
+              {view === "month" && recordDates.includes(formattedDate) && (
+                <RecordSign
+                  src="../../../img/recordsign.png"
+                  alt="기록입력"
+                ></RecordSign>
+              )}
               {view === "month" && periodDays.includes(formattedDate) && (
                 <StyledDot key={formattedDate} />
               )}
