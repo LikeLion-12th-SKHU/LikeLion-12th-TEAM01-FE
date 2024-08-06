@@ -57,7 +57,7 @@ const Login = () => {
   const getToken = async (authCode) => {
     try {
       const response = await axios.get(
-        `${backendUrl}/login/oauth2/google?code=${authCode}`
+        `${backendUrl}/login/oauth2/code/google?code=${authCode}`
       );
 
       console.log(response);
