@@ -70,7 +70,7 @@ const Header = () => {
           <img src="../../img/profile.png" alt="profile" />
         </StyledLink>
         {!isLoggedIn ? (
-          <StyledLink to="/login">로그인</StyledLink>
+          <StyledLink to="/login/oauth2/code/google">로그인</StyledLink>
         ) : (
           <>
             <StyledLink to="/compete">대결랭킹</StyledLink>
