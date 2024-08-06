@@ -4,6 +4,7 @@ import CalendarLogin from "../../components/main/login/CalendarLogin";
 import TodayRecord from "../../components/main/login/TodayRecord";
 import styled from "styled-components";
 import { useAuth } from "../../contexts/AuthContext";
+import Rank from "../../components/Rank";
 
 const Wrapper = styled.div`
   display: flex;
@@ -104,11 +105,19 @@ const RankTitle = styled.h2`
 const RankWrapper = styled.div`
   border: 3px solid #7ed188;
   border-radius: 10px;
-  height: 360px;
+  height: 290px;
+  width: 95%;
+  padding: 10px;
+  max-height: 400px; /* 원하는 높이로 설정 */
+  overflow-y: auto; /* 수직 스크롤바 추가 */
+
+  .name {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
 `;
 
 const MainPage = () => {
-  /*const [loggedIn, setLoggedIn] = useState(false);*/
   const { isLoggedIn } = useAuth();
 
   const [selectedDate, setSelectedDate] = useState(
@@ -138,35 +147,38 @@ const MainPage = () => {
             핏핏은 Com‘Pete’ + ‘Fit’ 의 합성어로 즐거운 건강함을 추구합니다.
           </Introduce>
           <Record>
-            <TodayRecord
-              selectedDate={selectedDate}
-              onRecordDateChange={handleRecordDateChange}
-            />
-            {/*}) : (
+            {isLoggedIn ? (
+              <TodayRecord
+                selectedDate={selectedDate}
+                onRecordDateChange={handleRecordDateChange}
+              />
+            ) : (
               <div>
                 <RecordTitle>오늘의 기록</RecordTitle>
                 <TitleButton>로그인 후 이용가능합니다.</TitleButton>
               </div>
-            )}*/}
+            )}
           </Record>
         </IntroduceWrapper>
       </TodayRecordWrapper>
       <CalendarWrapper>
         <CalendarLoginTitle>내 캘린더</CalendarLoginTitle>
-        {/*{isLoggedIn ? (*/}
-        <CalendarLoginWrapper>
-          <CalendarLogin
-            onChangeDate={handleDateChange}
-            recordDates={recordDates}
-          />
-        </CalendarLoginWrapper>
-        {/*}) : (
+        {isLoggedIn ? (
+          <CalendarLoginWrapper>
+            <CalendarLogin
+              onChangeDate={handleDateChange}
+              recordDates={recordDates}
+            />
+          </CalendarLoginWrapper>
+        ) : (
           <CalendarLogoutWrapper>
             <Calendar />
           </CalendarLogoutWrapper>
-        )}*/}
+        )}
         <RankTitle>전체 순위</RankTitle>
-        <RankWrapper></RankWrapper>
+        <RankWrapper>
+          <Rank />
+        </RankWrapper>
       </CalendarWrapper>
     </Wrapper>
   );
