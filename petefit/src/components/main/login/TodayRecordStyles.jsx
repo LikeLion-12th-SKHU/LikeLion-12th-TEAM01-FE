@@ -234,5 +234,3 @@ export const SupplementOption = styled.p`
   font-size: 16px;
   margin-right: 7px;
 `;
-
-export const WeightInput = styled.input``;
