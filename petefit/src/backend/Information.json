@@ -6,7 +6,8 @@
     "recommend": 40,
     "save": 67,
     "views": 197,
-    "category": "식단"
+    "category": "식단",
+    "content": "본문"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "recommend": 55,
     "save": 88,
     "views": 97,
-    "category": "물"
+    "category": "물",
+    "content": "본문"
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@
     "recommend": 4,
     "save": 7,
     "views": 19,
-    "category": "운동"
+    "category": "운동",
+    "content": "본문"
   },
   {
     "id": 4,
@@ -33,7 +36,8 @@
     "recommend": 140,
     "save": 670,
     "views": 17,
-    "category": "영양제"
+    "category": "영양제",
+    "content": "본문"
   },
   {
     "id": 5,
@@ -42,7 +46,8 @@
     "recommend": 30,
     "save": 6,
     "views": 1970,
-    "category": "수면"
+    "category": "수면",
+    "content": "본문"
   },
   {
     "id": 6,
@@ -51,7 +56,8 @@
     "recommend": 4000,
     "save": 6,
     "views": 199,
-    "category": "성건강"
+    "category": "성건강",
+    "content": "본문"
   },
   {
     "id": 7,
@@ -60,7 +66,8 @@
     "recommend": 47,
     "save": 68,
     "views": 1,
-    "category": "식단"
+    "category": "식단",
+    "content": "본문"
   },
   {
     "id": 8,
@@ -69,7 +76,8 @@
     "recommend": 46,
     "save": 33,
     "views": 12,
-    "category": "영양제"
+    "category": "영양제",
+    "content": "본문"
   },
   {
     "id": 9,
@@ -78,7 +86,8 @@
     "recommend": 0,
     "save": 670,
     "views": 1937,
-    "category": "운동"
+    "category": "운동",
+    "content": "본문"
   },
   {
     "id": 10,
@@ -87,7 +96,8 @@
     "recommend": 77,
     "save": 69,
     "views": 14,
-    "category": "수면"
+    "category": "수면",
+    "content": "본문"
   },
   {
     "id": 11,
@@ -96,7 +106,8 @@
     "recommend": 40,
     "save": 68,
     "views": 11,
-    "category": "식단"
+    "category": "식단",
+    "content": "본문"
   },
   {
     "id": 12,
@@ -105,7 +116,8 @@
     "recommend": 67,
     "save": 99,
     "views": 10,
-    "category": "물"
+    "category": "물",
+    "content": "본문"
   },
   {
     "id": 13,
@@ -114,6 +126,7 @@
     "recommend": 43,
     "save": 68,
     "views": 111,
-    "category": "운동"
+    "category": "운동",
+    "content": "본문"
   }
 ]
