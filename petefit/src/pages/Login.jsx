@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import styled from "styled-components";
@@ -37,10 +38,8 @@ const Login = () => {
 
   const handleLogin = () => {
     const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-    const redirectUri = `${window.location.origin}/login`; // 구글 로그인 리디렉션 URI
-    const googleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=email%20profile`;
-
-    window.location.href = googleLoginUrl;
+    const redirectUri = process.env.REACT_APP_GOOGLE_REDIRECT_URI;
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=email%20profile`;
   };
 
   useEffect(() => {
@@ -48,40 +47,35 @@ const Login = () => {
     const code = urlParams.get("code");
 
     if (code) {
-      fetch(
-        `${backendUrl}/login/oauth2/code/google?code=${code}&noCache=true`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Cache-Control":
-              "no-store, no-cache, must-revalidate, proxy-revalidate",
-            Pragma: "no-cache",
-            Expires: "0",
-          },
-        }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data) => {
-          if (data.success) {
-            setUser({ email: data.email, name: data.name });
-            setIsLoggedIn(true);
-            setLoginStatus("로그인 성공!");
-            navigate("/");
-          } else {
-            setLoginStatus("로그인 실패: " + data.message);
-          }
-        })
-        .catch((error) => {
-          setLoginStatus("Error: " + error.message);
-        });
+      getToken(code);
+      navigate("/");
     }
-  }, [navigate, setIsLoggedIn, setUser, backendUrl]);
+  }, []);
+
+  const getToken = async (authCode) => {
+    try {
+      const response = await axios.get(
+        `${backendUrl}/login/oauth2/code/google?code=${authCode}`
+      );
+
+      const { accessToken, user } = response.data;
+
+      // 로그인 성공 시 상태 업데이트
+      setIsLoggedIn(true);
+      setUser(user);
+
+      // 토큰을 로컬 스토리지에 저장하거나 쿠키에 저장할 수 있음
+      localStorage.setItem("accessToken", accessToken);
+
+      setLoginStatus("로그인에 성공했습니다!");
+
+      // 로그인 후 홈 페이지로 리디렉션
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      setLoginStatus("로그인에 실패했습니다.");
+    }
+  };
 
   return (
     <LoginDiv>
