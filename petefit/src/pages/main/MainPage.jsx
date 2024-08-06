@@ -114,9 +114,19 @@ const MainPage = () => {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toLocaleDateString()
   );
+  const [recordDates, setRecordDates] = useState([]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+  };
+
+  const handleRecordDateChange = (date) => {
+    setRecordDates((prevDates) => {
+      if (date && !prevDates.includes(date)) {
+        return [...prevDates, date];
+      }
+      return prevDates;
+    });
   };
 
   return (
@@ -129,7 +139,10 @@ const MainPage = () => {
           </Introduce>
           <Record>
             {isLoggedIn ? (
-              <TodayRecord selectedDate={selectedDate} />
+              <TodayRecord
+                selectedDate={selectedDate}
+                onRecordDateChange={handleRecordDateChange}
+              />
             ) : (
               <div>
                 <RecordTitle>오늘의 기록</RecordTitle>
@@ -143,7 +156,10 @@ const MainPage = () => {
         <CalendarLoginTitle>내 캘린더</CalendarLoginTitle>
         {isLoggedIn ? (
           <CalendarLoginWrapper>
-            <CalendarLogin onChangeDate={handleDateChange} />
+            <CalendarLogin
+              onChangeDate={handleDateChange}
+              recordDates={recordDates}
+            />
           </CalendarLoginWrapper>
         ) : (
           <CalendarLogoutWrapper>
