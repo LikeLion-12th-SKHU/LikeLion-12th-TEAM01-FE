@@ -38,9 +38,12 @@ const StyledLink = styled(Link)`
 `;
 
 const LogoutButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80px;
   height: 30px;
-  background-color: #a4ffaf;
+  background-color: rgb(155, 231, 164);
   border: 1px solid #d9d9d9;
   border-radius: 5px;
 `;
