@@ -37,6 +37,17 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const LogoutButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  background-color: rgb(155, 231, 164);
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+`;
+
 const Header = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
 
@@ -70,7 +81,7 @@ const Header = () => {
         ) : (
           <>
             <StyledLink to="/compete">대결랭킹</StyledLink>
-            <button onClick={logout}>로그아웃</button>
+            <LogoutButton onClick={logout}>로그아웃</LogoutButton>
             <StyledLink to="/mypage">
               <img src="../../img/profile.png" alt="profile" />
             </StyledLink>

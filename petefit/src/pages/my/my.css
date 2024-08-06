@@ -43,6 +43,14 @@
   margin-bottom: 10px;
 }
 
+.profile-info button {
+  width: 80px;
+  height: 30px;
+  background-color: #a4ffaf;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+}
+
 .my_right {
   width: 840px;
   display: flex;
