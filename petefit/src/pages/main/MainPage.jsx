@@ -138,34 +138,33 @@ const MainPage = () => {
             핏핏은 Com‘Pete’ + ‘Fit’ 의 합성어로 즐거운 건강함을 추구합니다.
           </Introduce>
           <Record>
-            {isLoggedIn ? (
-              <TodayRecord
-                selectedDate={selectedDate}
-                onRecordDateChange={handleRecordDateChange}
-              />
-            ) : (
+            <TodayRecord
+              selectedDate={selectedDate}
+              onRecordDateChange={handleRecordDateChange}
+            />
+            {/*}) : (
               <div>
                 <RecordTitle>오늘의 기록</RecordTitle>
                 <TitleButton>로그인 후 이용가능합니다.</TitleButton>
               </div>
-            )}
+            )}*/}
           </Record>
         </IntroduceWrapper>
       </TodayRecordWrapper>
       <CalendarWrapper>
         <CalendarLoginTitle>내 캘린더</CalendarLoginTitle>
-        {isLoggedIn ? (
-          <CalendarLoginWrapper>
-            <CalendarLogin
-              onChangeDate={handleDateChange}
-              recordDates={recordDates}
-            />
-          </CalendarLoginWrapper>
-        ) : (
+        {/*{isLoggedIn ? (*/}
+        <CalendarLoginWrapper>
+          <CalendarLogin
+            onChangeDate={handleDateChange}
+            recordDates={recordDates}
+          />
+        </CalendarLoginWrapper>
+        {/*}) : (
           <CalendarLogoutWrapper>
             <Calendar />
           </CalendarLogoutWrapper>
-        )}
+        )}*/}
         <RankTitle>전체 순위</RankTitle>
         <RankWrapper></RankWrapper>
       </CalendarWrapper>
