@@ -79,7 +79,7 @@ const Rank = () => {
   return (
     <RankContainer>
       <RankingInfo>
-        <h1>전체 순위</h1>
+        <h1 className="name">전체 순위</h1>
       </RankingInfo>
       <List>
         {rank.map((user) => (

@@ -105,7 +105,16 @@ const RankTitle = styled.h2`
 const RankWrapper = styled.div`
   border: 3px solid #7ed188;
   border-radius: 10px;
-  height: 360px;
+  height: 290px;
+  width: 95%;
+  padding: 10px;
+  max-height: 400px; /* 원하는 높이로 설정 */
+  overflow-y: auto; /* 수직 스크롤바 추가 */
+
+  .name {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
 `;
 
 const MainPage = () => {
