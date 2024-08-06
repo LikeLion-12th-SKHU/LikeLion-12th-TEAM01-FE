@@ -7,7 +7,9 @@ import MainPage from "./pages/main/MainPage";
 import { AuthProvider } from "./contexts/AuthContext";
 import Community from "./pages/community/Community";
 import CommunityPost from "./pages/communityPost/CommunityPost";
+import CommunityDetail from "./pages/communityDetail/CommunityDetail";
 import Information from "./pages/information/Information";
+import InformationDetail from "./pages/informationDetail/InformationDetail";
 import Compete from "./pages/compete/compete";
 import MyPage from "./pages/my/MyPage";
 import UserProfile from "./pages/user/UserProfile";
@@ -23,8 +25,10 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/login/oauth2/code/google" element={<Login />} />
           <Route path="/informations" element={<Information />} />
+          <Route path="/informations/:id" element={<InformationDetail />} />
           <Route path="/board" element={<Community />} />
           <Route path="/board/write" element={<CommunityPost />} />
+          <Route path="/board/detail/:id" element={<CommunityDetail />} />
           <Route path="/compete" element={<Compete />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/mypage/onboarding" element={<UserProfile />} />
