@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // react-router-dom에서 useNavigate 가져오기
 import Calendar from "../../components/main/logout/Calendar";
 import InformationList from "../../components/InformationList";
 import "./my.css";
@@ -10,6 +11,8 @@ export default function MyPage() {
     weight: "",
     gender: "",
   });
+
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
     fetch("/mypage/getMember")
@@ -27,6 +30,10 @@ export default function MyPage() {
       });
   }, []);
 
+  const handleEditProfile = () => {
+    navigate("/mypage/onboarding"); // useProfile 페이지로 이동
+  };
+
   return (
     <div className="container">
       <h1>프로필</h1>
@@ -40,6 +47,8 @@ export default function MyPage() {
               className="profile-image"
             />
             <div className="profile-info">
+              <button onClick={handleEditProfile}>정보 수정</button>{" "}
+              {/* 정보 수정 버튼 추가 */}
               <h3>{profileInfo.name}</h3>
               <p>키: {profileInfo.height} cm</p>
               <p>몸무게: {profileInfo.weight} kg</p>
