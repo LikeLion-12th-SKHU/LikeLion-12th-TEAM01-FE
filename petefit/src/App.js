@@ -21,7 +21,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login/oauth2/code/google" element={<Login />} />
           <Route path="/informations" element={<Information />} />
           <Route path="/board" element={<Community />} />
           <Route path="/board/write" element={<CommunityPost />} />

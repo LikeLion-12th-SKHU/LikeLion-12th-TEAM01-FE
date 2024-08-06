@@ -37,7 +37,7 @@ const Login = () => {
 
   const handleLogin = () => {
     const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-    const redirectUri = `${window.location.origin}/login`; // 구글 로그인 리디렉션 URI
+    const redirectUri = `${window.location.origin}/login/oauth2/code/google`; // 구글 로그인 리디렉션 URI
     const googleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=email%20profile`;
 
     window.location.href = googleLoginUrl;
