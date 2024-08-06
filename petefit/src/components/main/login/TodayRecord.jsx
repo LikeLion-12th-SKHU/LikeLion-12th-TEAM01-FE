@@ -6,6 +6,7 @@ import {
   DropdownItem,
   Record,
   Label,
+  Intensity,
   Textarea,
   Input,
   Button,
@@ -25,11 +26,12 @@ import {
   Dropdown,
   SupplementContainer,
   SupplementOption,
+  WeightContainer,
   WeightInput,
 } from "./TodayRecordStyles";
 import moment from "moment";
 
-const TodayRecord = ({ selectedDate }) => {
+const TodayRecord = ({ selectedDate, onRecordDateChange }) => {
   const [mealType, setMealType] = useState("breakfast");
   const [mealContent, setMealContent] = useState({
     breakfast: "",
@@ -78,6 +80,7 @@ const TodayRecord = ({ selectedDate }) => {
       setExerciseIntensity(savedRecords.exerciseIntensity || 50);
       setSleep(savedRecords.sleep || "");
       setIsEditing(false);
+      if (onRecordDateChange) onRecordDateChange(date);
     } else {
       resetForm();
     }
@@ -190,15 +193,15 @@ const TodayRecord = ({ selectedDate }) => {
         <>
           <RecordWrapper>
             <Record>
-              <Label>몸무게</Label>
-              <InputContainer>
-                <Input
+              <Label className="weight">몸무게</Label>
+              <WeightContainer>
+                <WeightInput
                   type="text"
                   value={weight}
                   onChange={handleWeightChange}
                 />
                 <UnitLabel>kg</UnitLabel>
-              </InputContainer>
+              </WeightContainer>
               <Label>식단 기록</Label>
               <Dropdown value={mealType} onChange={handleMealChange}>
                 <DropdownItem value="breakfast">아침</DropdownItem>
@@ -260,7 +263,7 @@ const TodayRecord = ({ selectedDate }) => {
                 ))}
               </Dropdown>
               <IntensityContainer>
-                <Label>강도</Label>
+                <Intensity>강도</Intensity>
                 <BarContainer onClick={handleIntensityClick}>
                   <ClickableBar intensity={exerciseIntensity} />
                 </BarContainer>
@@ -308,7 +311,7 @@ const TodayRecord = ({ selectedDate }) => {
         <SavedRecordsContainer>
           <RecordItem>
             <Label>몸무게</Label>
-            <p>{savedRecords?.weight || "입력되지 않음"} kg</p>
+            <p>{savedRecords?.weight || ""} kg</p>
           </RecordItem>
           <RecordItem>
             <Label>식단 기록</Label>

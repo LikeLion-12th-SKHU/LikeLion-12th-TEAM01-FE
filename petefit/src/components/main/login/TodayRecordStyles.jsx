@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const RecordWrapper = styled.div`
-  margin-top: 30px;
+  margin-top: 25px;
 `;
 
 export const TitleDropdown = styled.select`
@@ -57,6 +57,10 @@ export const Record = styled.div`
 export const Label = styled.label`
   display: flex;
   margin-bottom: 15px;
+  font-size: 20px;
+`;
+
+export const Intensity = styled.label`
   font-size: 20px;
 `;
 
@@ -140,7 +144,7 @@ export const IntensityContainer = styled.div`
 `;
 
 export const BarContainer = styled.div`
-  width: 300px;
+  width: 600px;
   height: 20px;
   background-color: #e9e9e9;
   border-radius: 10px;
@@ -233,4 +237,22 @@ export const SupplementContainer = styled.div`
 export const SupplementOption = styled.p`
   font-size: 16px;
   margin-right: 7px;
+`;
+
+export const WeightContainer = styled.div`
+  .weightInput {
+    margin-bottom: 20px;
+  }
+`;
+
+export const WeightInput = styled.input`
+  font-size: 20px;
+  width: 110px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #868686;
+  border-radius: 0;
+  resize: none;
+  outline: none;
+  margin-bottom: 30px;
 `;
