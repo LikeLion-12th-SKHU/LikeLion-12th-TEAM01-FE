@@ -51,6 +51,7 @@ const Login = () => {
 
     if (code) {
       getToken(code);
+      navigate("/");
     }
   }, [navigate, setIsLoggedIn, setUser, backendUrl]);
 
