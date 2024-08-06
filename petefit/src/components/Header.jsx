@@ -65,20 +65,16 @@ const Header = () => {
       <div>
         <StyledLink to="/informations">정보목록</StyledLink>
         <StyledLink to="/board">커뮤니티</StyledLink>
-        <StyledLink to="/compete">대결랭킹</StyledLink>
-        <StyledLink to="/mypage">
-          <img src="../../img/profile.png" alt="profile" />
-        </StyledLink>
-        {!isLoggedIn ? (
-          <StyledLink to="/login">로그인</StyledLink>
-        ) : (
+        {isLoggedIn ? (
           <>
             <StyledLink to="/compete">대결랭킹</StyledLink>
-            <button onClick={logout}>로그아웃</button>
-            <StyledLink to="/mypage">
+            <ProfileLink to="/mypage">
               <img src="../../img/profile.png" alt="profile" />
-            </StyledLink>
+            </ProfileLink>
+            <button onClick={logout}>로그아웃</button>
           </>
+        ) : (
+          <StyledLink to="/login">로그인</StyledLink>
         )}
       </div>
     </StyledHeader>
