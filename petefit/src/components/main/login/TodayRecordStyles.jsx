@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const RecordWrapper = styled.div`
-  margin-top: 25px;
+  margin-top: 30px;
 `;
 
 export const TitleDropdown = styled.select`
@@ -62,7 +62,14 @@ export const Label = styled.label`
 
 export const Intensity = styled.label`
   font-size: 20px;
+  margin-top: 10px;
 `;
+
+export const RecordWeight = styled.label`
+  font-size: 20px;
+`;
+
+export const RecordWater = styled.label``;
 
 export const Textarea = styled.input`
   width: 180px;
@@ -150,6 +157,7 @@ export const BarContainer = styled.div`
   border-radius: 10px;
   margin-left: 20px;
   cursor: pointer;
+  margin-top: 8px;
 `;
 
 export const ClickableBar = styled.div`
@@ -236,10 +244,11 @@ export const SupplementContainer = styled.div`
 
 export const SupplementOption = styled.p`
   font-size: 16px;
-  margin-right: 7px;
+  margin-right: 5px;
 `;
 
 export const WeightContainer = styled.div`
+  margin-top: 30px;
   .weightInput {
     margin-bottom: 20px;
   }
