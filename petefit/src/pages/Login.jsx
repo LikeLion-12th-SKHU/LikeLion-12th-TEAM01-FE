@@ -49,37 +49,50 @@ const Login = () => {
     const code = urlParams.get("code");
 
     if (code) {
-      fetch(`${backendUrl}/login/oauth2/google?code=${code}&noCache=true`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control":
-            "no-store, no-cache, must-revalidate, proxy-revalidate",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data) => {
-          if (data.success) {
-            setUser({ email: data.email, name: data.name });
-            setIsLoggedIn(true);
-            setLoginStatus("로그인 성공!");
-            navigate("/");
-          } else {
-            setLoginStatus("로그인 실패: " + data.message);
-          }
-        })
-        .catch((error) => {
-          setLoginStatus("Error: " + error.message);
-        });
+      getToken();
+      //   fetch(`${backendUrl}/login/oauth2/google?code=${code}&noCache=true`, {
+      //     method: "GET",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       "Cache-Control":
+      //         "no-store, no-cache, must-revalidate, proxy-revalidate",
+      //       Pragma: "no-cache",
+      //       Expires: "0",
+      //     },
+      //   })
+      //     .then((response) => {
+      //       if (!response.ok) {
+      //         throw new Error(`Status: ${response.status}`);
+      //       }
+      //       return response.json();
+      //     })
+      //     .then((data) => {
+      //       if (data.success) {
+      //         setUser({ email: data.email, name: data.name });
+      //         setIsLoggedIn(true);
+      //         setLoginStatus("로그인 성공!");
+      //         navigate("/");
+      //       } else {
+      //         setLoginStatus("로그인 실패: " + data.message);
+      //       }
+      //     })
+      //     .catch((error) => {
+      //       setLoginStatus("Error: " + error.message);
+      //     });
     }
   }, [navigate, setIsLoggedIn, setUser, backendUrl]);
+
+  const getToken = async () => {
+    try {
+      const response = await axios.get(
+        `${backendUrl}/login/oauth2/google?code=${code}`
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <LoginDiv>
