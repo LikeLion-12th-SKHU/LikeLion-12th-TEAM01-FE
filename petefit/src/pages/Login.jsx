@@ -34,11 +34,14 @@ const Login = () => {
   const { setIsLoggedIn, setUser } = useAuth();
   const backendUrl = process.env.REACT_APP_API_URL; // 백엔드 URL
   const [loginStatus, setLoginStatus] = useState(null);
+  const [loginToken, setLoginToken] = useState({
+    accessToken: "",
+  });
 
   const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/login/oauth2/google`; // 구글 로그인 리디렉션 URI
-
-    window.location.href = redirectUri;
+    const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+    const redirectUri = process.env.REACT_APP_GOOGLE_REDIRECT_URI;
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=email%20profile`;
   };
 
   useEffect(() => {
@@ -66,17 +69,13 @@ const Login = () => {
           if (data.success) {
             setUser({ email: data.email, name: data.name });
             setIsLoggedIn(true);
-            console.log("여긴 됨");
             setLoginStatus("로그인 성공!");
-            console.log("여기 2");
             navigate("/");
           } else {
             setLoginStatus("로그인 실패: " + data.message);
-            console.log("여기 3");
           }
         })
         .catch((error) => {
-          console.log("여기 4");
           setLoginStatus("Error: " + error.message);
         });
     }
