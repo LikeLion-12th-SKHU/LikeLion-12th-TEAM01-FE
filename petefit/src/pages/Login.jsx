@@ -35,9 +35,6 @@ const Login = () => {
   const { setIsLoggedIn, setUser } = useAuth();
   const backendUrl = process.env.REACT_APP_API_URL; // 백엔드 URL
   const [loginStatus, setLoginStatus] = useState(null);
-  const [loginToken, setLoginToken] = useState({
-    accessToken: "",
-  });
 
   const handleLogin = () => {
     const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -53,7 +50,7 @@ const Login = () => {
       getToken(code);
       navigate("/");
     }
-  }, [navigate, setIsLoggedIn, setUser, backendUrl]);
+  }, []);
 
   const getToken = async (authCode) => {
     try {
@@ -61,9 +58,22 @@ const Login = () => {
         `${backendUrl}/login/oauth2/code/google?code=${authCode}`
       );
 
-      console.log(response);
+      const { accessToken, user } = response.data;
+
+      // 로그인 성공 시 상태 업데이트
+      setIsLoggedIn(true);
+      setUser(user);
+
+      // 토큰을 로컬 스토리지에 저장하거나 쿠키에 저장할 수 있음
+      localStorage.setItem("accessToken", accessToken);
+
+      setLoginStatus("로그인에 성공했습니다!");
+
+      // 로그인 후 홈 페이지로 리디렉션
+      navigate("/");
     } catch (error) {
       console.error(error);
+      setLoginStatus("로그인에 실패했습니다.");
     }
   };
 
