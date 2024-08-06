@@ -37,7 +37,7 @@ const Login = () => {
 
   const handleLogin = () => {
     const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-    const redirectUri = `${window.location.origin}/login/oauth2/code/google`; // 구글 로그인 리디렉션 URI
+    const redirectUri = `${window.location.origin}/login/oauth2/google`; // 구글 로그인 리디렉션 URI
     const googleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=email%20profile`;
 
     window.location.href = googleLoginUrl;
@@ -48,19 +48,16 @@ const Login = () => {
     const code = urlParams.get("code");
 
     if (code) {
-      fetch(
-        `${backendUrl}/login/oauth2/code/google?code=${code}&noCache=true`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Cache-Control":
-              "no-store, no-cache, must-revalidate, proxy-revalidate",
-            Pragma: "no-cache",
-            Expires: "0",
-          },
-        }
-      )
+      fetch(`${backendUrl}/login/oauth2/google?code=${code}&noCache=true`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control":
+            "no-store, no-cache, must-revalidate, proxy-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      })
         .then((response) => {
           if (!response.ok) {
             throw new Error(`Status: ${response.status}`);
